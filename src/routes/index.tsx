@@ -1,26 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/sections/Hero";
+import { Values } from "@/components/sections/Values";
+import { Timeline } from "@/components/sections/Timeline";
+import { Gallery } from "@/components/sections/Gallery";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { FAQ } from "@/components/sections/FAQ";
+import { CTA } from "@/components/sections/CTA";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "AmaVille Escola — Educação Infantil e Fundamental I" },
+      { name: "description", content: "Um lugar seguro para aprender, crescer e sonhar. Educação humanizada do berçário ao 5º ano." },
+      { property: "og:title", content: "AmaVille Escola" },
+      { property: "og:description", content: "Educação humanizada para crianças felizes." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <Hero />
+      <Values />
+      <Timeline />
+      <Gallery compact />
+      <Testimonials />
+      <FAQ />
+      <CTA />
+    </>
+  );
 }
