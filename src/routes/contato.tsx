@@ -42,7 +42,12 @@ function Contato() {
         <div className="mx-auto max-w-6xl px-6 lg:px-10 grid lg:grid-cols-5 gap-10">
           <Reveal className="lg:col-span-2 space-y-6">
             {[
-              { icon: MapPin, t: "Endereço", d: "Rua das Acácias, 250\nJardim Feliz — São Paulo/SP" },
+              {
+                icon: MapPin,
+                t: "Endereço",
+                d: "Av. Litorânea, 07 — Olho D'água\nSão Luís - MA, 65067-490\n(Próximo ao Canto do Coco Mel / Extensão da Rua dos Carcarás)",
+                link: "https://www.google.com/maps/place/AmaVille/@-2.4821576,-44.2406066,17.09z/data=!4m14!1m7!3m6!1s0x7f6927cfda232a7:0x59d7b08c1ae42dfd!2sCanto+do+Coco+Mel!8m2!3d-2.4820801!4d-44.2405845!16s%2Fg%2F11cjk3pgb5!3m5!1s0x7f69327fc386f2d:0x25fe3e9dbb5fe38b!8m2!3d-2.4837716!4d-44.2409785!16s%2Fg%2F11q1d1hrk9?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+              },
               { icon: Phone, t: "Telefone", d: "(11) 4002-8922" },
               { icon: Mail, t: "E-mail", d: "ola@amaville.escola" },
               { icon: Clock, t: "Horário", d: "Seg a Sex — 7h às 19h" },
@@ -51,9 +56,23 @@ function Contato() {
                 <div className="h-12 w-12 rounded-2xl bg-turquoise-soft grid place-items-center flex-shrink-0">
                   <c.icon className="h-5 w-5" style={{ color: "var(--turquoise)" }} />
                 </div>
-                <div>
+                <div className="flex-1">
                   <div className="font-display font-bold text-foreground">{c.t}</div>
-                  <div className="text-sm text-muted-foreground whitespace-pre-line mt-1">{c.d}</div>
+                  {"link" in c && c.link ? (
+                    <a
+                      href={c.link as string}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link text-sm text-muted-foreground hover:text-primary transition-colors whitespace-pre-line mt-1 block"
+                    >
+                      {c.d}
+                      <span className="text-xs font-bold text-primary flex items-center gap-1 mt-2.5 group-hover/link:underline">
+                        Ver no Google Maps →
+                      </span>
+                    </a>
+                  ) : (
+                    <div className="text-sm text-muted-foreground whitespace-pre-line mt-1">{c.d}</div>
+                  )}
                 </div>
               </div>
             ))}

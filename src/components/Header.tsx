@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Logo } from "./Logo";
 
 const links = [
   { to: "/", label: "Início" },
@@ -27,16 +28,15 @@ export function Header() {
         scrolled ? "bg-background/80 backdrop-blur-xl shadow-soft" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative h-10 w-10 rounded-2xl bg-gradient-brand grid place-items-center shadow-soft transition-transform group-hover:scale-110">
-            <span className="text-primary-foreground font-display font-extrabold text-lg">A</span>
-            <div className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-secondary" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-display font-extrabold text-lg text-foreground">AmaVille</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Escola</div>
-          </div>
+      <div className={`mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between transition-all duration-500 ${
+        scrolled ? "h-16 lg:h-20" : "h-20 lg:h-24"
+      }`}>
+        <Link to="/" className="focus:outline-none">
+          <Logo
+            heightClass={`transition-all duration-500 ${
+              scrolled ? "h-12 lg:h-[66px]" : "h-16 lg:h-[82px]"
+            }`}
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

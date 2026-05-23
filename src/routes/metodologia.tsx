@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { Timeline } from "@/components/sections/Timeline";
 import { CTA } from "@/components/sections/CTA";
-import { Brain, Heart, Palette, Globe, Users, Sprout } from "lucide-react";
+import { Brain, Heart, Globe, Users, Sprout, HeartHandshake } from "lucide-react";
 
 export const Route = createFileRoute("/metodologia")({
   head: () => ({
@@ -19,8 +19,8 @@ export const Route = createFileRoute("/metodologia")({
 const pillars = [
   { icon: Brain, t: "Pensamento investigativo", d: "Projetos autorais e perguntas reais como motor da aprendizagem." },
   { icon: Heart, t: "Socioemocional estruturado", d: "Rodas de conversa, mediação afetiva e regulação emocional como currículo." },
-  { icon: Palette, t: "Cem linguagens", d: "Arte, música, corpo e narrativa como formas legítimas de expressar o pensamento." },
-  { icon: Globe, t: "Bilinguismo cultural", d: "Inglês e espanhol vivenciados a partir da Educação Infantil." },
+  { icon: HeartHandshake, t: "Princípios Cristãos", d: "Formação moral orientada pelo amor de Cristo, fé, respeito mútuo e caráter." },
+  { icon: Globe, t: "Imersão Bilíngue Ativa", d: "O inglês vivenciado diariamente de forma natural e prática na rotina da criança." },
   { icon: Users, t: "Comunidade aprendente", d: "Famílias, professores e crianças co-construindo a escola todos os dias." },
   { icon: Sprout, t: "Natureza e movimento", d: "Tempo ao ar livre, hortas, escalada e brincar livre como direitos." },
 ];
@@ -45,7 +45,7 @@ function Metodologia() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="bg-background rounded-t-[3rem] lg:rounded-t-[4.5rem] relative z-10 -mt-16 pt-32 lg:pt-40 pb-24 shadow-[0_-15px_30px_-10px_rgba(0,0,0,0.02)]">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {pillars.map((p, i) => (
             <Reveal key={p.t} delay={i * 0.05}>

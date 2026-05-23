@@ -1,18 +1,18 @@
-import { Heart, Shield, Sparkles, Leaf, Users, BookOpen } from "lucide-react";
+import { Heart, Shield, Leaf, Users, HeartHandshake, Languages } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const values = [
   { icon: Heart, title: "Afeto que educa", desc: "Vínculos seguros são a base para qualquer aprendizagem real.", color: "var(--orange)", bg: "var(--orange-soft)" },
   { icon: Shield, title: "Segurança total", desc: "Infraestrutura, processos e olhar atento em cada momento do dia.", color: "var(--turquoise)", bg: "var(--turquoise-soft)" },
-  { icon: Sparkles, title: "Criatividade viva", desc: "Linguagens artísticas, brincar livre e curiosidade como combustível.", color: "var(--purple)", bg: "var(--purple-soft)" },
+  { icon: HeartHandshake, title: "Valores Cristãos", desc: "Formação integral baseada no amor de Cristo, respeito, fé, generosidade e caráter.", color: "var(--purple)", bg: "var(--purple-soft)" },
   { icon: Leaf, title: "Desenvolvimento integral", desc: "Cognitivo, emocional, social e motor — tudo conectado.", color: "var(--turquoise)", bg: "var(--turquoise-soft)" },
   { icon: Users, title: "Comunidade", desc: "Família e escola caminhando juntas em diálogo constante.", color: "var(--orange)", bg: "var(--orange-soft)" },
-  { icon: BookOpen, title: "Aprender com sentido", desc: "Projetos investigativos que conectam o saber à vida real.", color: "var(--purple)", bg: "var(--purple-soft)" },
+  { icon: Languages, title: "Imersão Bilíngue", desc: "Inglês vivenciado de forma natural e prática em toda a rotina escolar.", color: "var(--purple)", bg: "var(--purple-soft)" },
 ];
 
 export function Values() {
   return (
-    <section className="py-24 lg:py-32">
+    <section className="bg-background rounded-t-[3rem] lg:rounded-t-[4.5rem] relative z-10 -mt-16 pt-32 lg:pt-40 pb-24 lg:pb-32 shadow-[0_-15px_30px_-10px_rgba(0,0,0,0.02)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="max-w-2xl mb-16">
           <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">Nossos valores</div>

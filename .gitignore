@@ -27,6 +27,8 @@ dist-ssr
 .DS_Store
 *.suo
 *.ntvs*
-*.njsproj
-*.sln
 *.sw?
+
+# Temporary/backup assets
+src/assets/logo-original.png
+src/assets/logo-transparent.png

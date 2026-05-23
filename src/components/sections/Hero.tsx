@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            Educação Infantil e Anos Iniciais do Ensino Fundamental com uma abordagem humanizada, lúdica e socioemocional — onde cada criança é vista, ouvida e amada.
+            Escola Bilíngue de Educação Infantil e Anos Iniciais do Ensino Fundamental. Uma jornada educativa orientada por princípios cristãos, afeto, ciência e propósito — onde cada criança é vista, ouvida e amada.
           </motion.p>
 
           <motion.div
@@ -67,23 +67,7 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="mt-12 flex items-center gap-8"
-          >
-            {[
-              { n: "+18", l: "anos de história" },
-              { n: "12:1", l: "alunos por professor" },
-              { n: "98%", l: "famílias indicariam" },
-            ].map((s) => (
-              <div key={s.l}>
-                <div className="font-display font-extrabold text-2xl text-foreground">{s.n}</div>
-                <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
-              </div>
-            ))}
-          </motion.div>
+
         </div>
 
         <motion.div
@@ -125,11 +109,6 @@ export function Hero() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute -right-4 lg:-right-6 bottom-12 rounded-2xl bg-card shadow-card p-4"
           >
-            <div className="flex -space-x-2 mb-2">
-              {["#11B5B0", "#F57C20", "#6A0DAD"].map((c) => (
-                <div key={c} className="h-7 w-7 rounded-full border-2 border-card" style={{ background: c }} />
-              ))}
-            </div>
             <div className="text-xs font-semibold text-foreground">Famílias felizes</div>
             <div className="text-[11px] text-muted-foreground">+ de 800 atendidas</div>
           </motion.div>

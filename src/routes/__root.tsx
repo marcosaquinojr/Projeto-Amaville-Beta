@@ -76,15 +76,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "AmaVille Escola — Um lugar seguro para aprender, crescer e sonhar" },
-      { name: "description", content: "Educação Infantil e Anos Iniciais do Ensino Fundamental com afeto, ciência e propósito. Conheça a AmaVille Escola." },
+      { name: "description", content: "Educação Infantil e Anos Iniciais do Ensino Fundamental com afeto, ciência, valores cristãos e propósito. Conheça a AmaVille Escola." },
       { name: "author", content: "AmaVille Escola" },
       { property: "og:title", content: "AmaVille Escola" },
-      { property: "og:description", content: "Educação humanizada para crianças felizes." },
+      { property: "og:description", content: "Educação humanizada para crianças felizes com princípios cristãos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon.png",
+      },
       {
         rel: "stylesheet",
         href: appCss,

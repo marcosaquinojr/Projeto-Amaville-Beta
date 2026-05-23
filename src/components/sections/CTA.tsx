@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export function CTA() {
   return (
-    <section className="py-24 lg:py-32">
+    <section className="bg-background rounded-t-[3rem] lg:rounded-t-[4.5rem] relative z-10 -mt-16 pt-32 lg:pt-40 pb-24 lg:pb-32 shadow-[0_-15px_30px_-10px_rgba(0,0,0,0.02)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-warm text-secondary-foreground p-12 lg:p-20 text-center shadow-warm">

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/sobre")({
       { title: "Sobre — AmaVille Escola" },
       { name: "description", content: "Conheça a história, a missão e os valores da AmaVille Escola." },
       { property: "og:title", content: "Sobre a AmaVille Escola" },
-      { property: "og:description", content: "Há mais de 18 anos educando com afeto, ciência e propósito." },
+      { property: "og:description", content: "Há mais de 18 anos educando com afeto, ciência, valores cristãos e propósito." },
     ],
   }),
   component: Sobre,
@@ -42,7 +42,7 @@ function Sobre() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="bg-background rounded-t-[3rem] lg:rounded-t-[4.5rem] relative z-10 -mt-16 pt-32 lg:pt-40 pb-24 shadow-[0_-15px_30px_-10px_rgba(0,0,0,0.02)]">
         <div className="mx-auto max-w-4xl px-6 lg:px-10 space-y-16">
           {[
             { t: "Nossa missão", d: "Acompanhar cada criança no desenvolvimento integral — cognitivo, emocional, social e físico — com escuta, afeto e excelência pedagógica." },
