@@ -5,17 +5,19 @@ import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
+const isVercel = !!(process.env.VERCEL || process.env.NOW_BUILDER);
+
 export default defineConfig({
   plugins: [
     tsConfigPaths(),
     tailwindcss(),
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    !isVercel && cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart({
-      target: "cloudflare-module",
-      server: { entry: "./src/server.ts" },
+      target: isVercel ? "vercel" : "cloudflare-module",
+      ...(isVercel ? {} : { server: { entry: "./src/server.ts" } }),
     }),
     viteReact(),
-  ],
+  ].filter(Boolean),
   resolve: {
     dedupe: [
       "react",
