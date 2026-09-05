@@ -1,31 +1,23 @@
 import { Reveal } from "@/components/Reveal";
-import g1 from "@/assets/gallery-1.jpg";
-import g1Webp from "@/assets/gallery-1.webp";
-import g2 from "@/assets/gallery-2.jpg";
-import g2Webp from "@/assets/gallery-2.webp";
-import g3 from "@/assets/gallery-3.jpg";
-import g3Webp from "@/assets/gallery-3.webp";
-import g4 from "@/assets/gallery-4.jpg";
-import g4Webp from "@/assets/gallery-4.webp";
-import g5 from "@/assets/gallery-5.jpg";
-import g5Webp from "@/assets/gallery-5.webp";
-import hero from "@/assets/hero-children.jpg";
-import heroWebp from "@/assets/hero-children.webp";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { INSTAGRAM_MEDIA, SCHOOL } from "@/lib/school";
 
 const items = [
   {
-    src: g3,
-    webp: g3Webp,
-    alt: "Crianças brincando ao ar livre",
+    src: INSTAGRAM_MEDIA.gallery[1],
+    alt: "Crianças da AmaVille brincando ao ar livre",
     className: "row-span-2",
   },
-  { src: g1, webp: g1Webp, alt: "Criança lendo um livro" },
-  { src: g2, webp: g2Webp, alt: "Professora acompanhando uma atividade" },
-  { src: g4, webp: g4Webp, alt: "Atividade com blocos coloridos" },
-  { src: g5, webp: g5Webp, alt: "Ambiente escolar", className: "col-span-2" },
-  { src: hero, webp: heroWebp, alt: "Crianças em atividade educativa" },
+  { src: INSTAGRAM_MEDIA.gallery[0], alt: "Criança da AmaVille em atividade de aprendizagem" },
+  { src: INSTAGRAM_MEDIA.gallery[2], alt: "Momento de devocional com a turma da AmaVille" },
+  {
+    src: INSTAGRAM_MEDIA.gallery[3],
+    alt: "Piquenique da turma da AmaVille",
+    className: "col-span-2",
+  },
+  { src: INSTAGRAM_MEDIA.gallery[4], alt: "Registro de uma vivência escolar da AmaVille" },
+  { src: INSTAGRAM_MEDIA.gallery[5], alt: "Projeto pedagógico da AmaVille" },
 ];
 
 export function Gallery({ compact = false }: { compact?: boolean }) {
@@ -60,20 +52,30 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
               delay={i * 0.05}
               className={`group relative overflow-hidden rounded-3xl shadow-soft ${it.className ?? ""}`}
             >
-              <picture className="block h-full w-full">
-                <source srcSet={it.webp} type="image/webp" />
-                <img
-                  src={it.src}
-                  alt={it.alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </picture>
+              <img
+                src={it.src}
+                alt={it.alt}
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-purple/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
             </Reveal>
           ))}
         </div>
+        <p className="mt-6 text-sm text-muted-foreground">
+          Fotos selecionadas do perfil oficial da AmaVille no{" "}
+          <a
+            href={SCHOOL.instagramUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            Instagram
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

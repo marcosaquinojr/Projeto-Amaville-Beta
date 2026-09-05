@@ -2,9 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { CTA } from "@/components/sections/CTA";
 import { Values } from "@/components/sections/Values";
-import heroImg from "@/assets/gallery-2.jpg";
-import heroWebp from "@/assets/gallery-2.webp";
-import { canonicalUrl } from "@/lib/school";
+import { canonicalUrl, INSTAGRAM_MEDIA } from "@/lib/school";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -56,17 +54,15 @@ function Sobre() {
           </Reveal>
           <Reveal delay={0.2}>
             <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-card">
-              <picture className="block h-full w-full">
-                <source srcSet={heroWebp} type="image/webp" />
-                <img
-                  src={heroImg}
-                  alt="Professora acompanhando uma atividade com crianças"
-                  className="h-full w-full object-cover"
-                  width={1280}
-                  height={960}
-                  loading="eager"
-                />
-              </picture>
+              <img
+                src={INSTAGRAM_MEDIA.about}
+                alt="Turma da AmaVille reunida em um momento de devocional"
+                className="h-full w-full object-cover"
+                width={1080}
+                height={1440}
+                loading="eager"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </Reveal>
         </div>

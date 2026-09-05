@@ -1,9 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookHeart, Languages, Sparkles } from "lucide-react";
-import heroImg from "@/assets/hero-children.jpg";
-import hero960 from "@/assets/hero-children-960.webp";
-import hero1440 from "@/assets/hero-children-1440.webp";
-import { SCHOOL } from "@/lib/school";
+import { INSTAGRAM_MEDIA, SCHOOL } from "@/lib/school";
 
 export function Hero() {
   return (
@@ -83,21 +80,15 @@ export function Hero() {
 
         <div className="lg:col-span-6 relative">
           <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-card">
-            <picture className="block h-full w-full">
-              <source
-                type="image/webp"
-                srcSet={`${hero960} 960w, ${hero1440} 1440w`}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-              <img
-                src={heroImg}
-                alt="Crianças participando de uma atividade educativa"
-                width={1920}
-                height={1080}
-                fetchPriority="high"
-                className="h-full w-full object-cover"
-              />
-            </picture>
+            <img
+              src={INSTAGRAM_MEDIA.hero}
+              alt="Crianças da AmaVille participando de uma atividade ao ar livre"
+              width={1080}
+              height={1440}
+              fetchPriority="high"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-purple/30 via-transparent to-transparent" />
           </div>
 
