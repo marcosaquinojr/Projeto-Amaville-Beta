@@ -9,19 +9,38 @@ export function CTA() {
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-warm text-secondary-foreground p-12 lg:p-20 text-center shadow-warm">
             <div className="absolute inset-0 opacity-30 pointer-events-none">
-              <div className="blob" style={{ background: "var(--turquoise)", width: 400, height: 400, top: -100, left: -80 }} />
-              <div className="blob" style={{ background: "var(--purple)", width: 320, height: 320, bottom: -100, right: -80 }} />
+              <div
+                className="blob"
+                style={{
+                  background: "var(--turquoise)",
+                  width: 400,
+                  height: 400,
+                  top: -100,
+                  left: -80,
+                }}
+              />
+              <div
+                className="blob"
+                style={{
+                  background: "var(--purple)",
+                  width: 320,
+                  height: 320,
+                  bottom: -100,
+                  right: -80,
+                }}
+              />
             </div>
             <div className="relative max-w-2xl mx-auto">
               <h2 className="font-display font-extrabold text-3xl lg:text-5xl leading-tight">
                 Venha sentir a AmaVille por dentro.
               </h2>
               <p className="mt-5 text-lg opacity-90">
-                Uma visita vale mais que mil fotos. Conheça nossos espaços, converse com nossa equipe e descubra o que torna a AmaVille única.
+                Conheça os espaços, tire suas dúvidas sobre as modalidades de 2027 e converse com a
+                equipe sobre a turma da sua criança.
               </p>
               <Link
                 to="/contato"
-                className="mt-10 inline-flex items-center gap-2 rounded-full bg-card text-foreground px-8 py-4 font-semibold shadow-card hover:scale-105 transition-transform"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-card text-foreground px-8 py-4 font-semibold shadow-card hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
               >
                 Agendar visita guiada
                 <ArrowRight className="h-4 w-4" />

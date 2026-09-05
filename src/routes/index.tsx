@@ -3,18 +3,29 @@ import { Hero } from "@/components/sections/Hero";
 import { Values } from "@/components/sections/Values";
 import { Timeline } from "@/components/sections/Timeline";
 import { Gallery } from "@/components/sections/Gallery";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { SchoolExperience } from "@/components/sections/SchoolExperience";
+import { Enrollment } from "@/components/sections/Enrollment";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
+import { canonicalUrl } from "@/lib/school";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "AmaVille Escola — Educação Infantil e Fundamental I" },
-      { name: "description", content: "Um lugar seguro para aprender, crescer e sonhar. Educação humanizada do berçário ao 5º ano." },
+      {
+        name: "description",
+        content:
+          "Escola cristã em São Luís com Educação Infantil, Fundamental até o 4º ano e inglês Wizard todos os dias pelo programa WIP.",
+      },
       { property: "og:title", content: "AmaVille Escola" },
-      { property: "og:description", content: "Educação humanizada para crianças felizes." },
+      {
+        property: "og:description",
+        content: "Educação cristã, metodologia socioconstrutivista e inglês Wizard diário.",
+      },
+      { property: "og:url", content: canonicalUrl("/") },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/") }],
   }),
   component: Index,
 });
@@ -25,8 +36,9 @@ function Index() {
       <Hero />
       <Values />
       <Timeline />
+      <Enrollment />
       <Gallery compact />
-      <Testimonials />
+      <SchoolExperience />
       <FAQ />
       <CTA />
     </>

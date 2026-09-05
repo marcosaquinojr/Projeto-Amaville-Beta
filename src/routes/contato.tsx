@@ -1,114 +1,260 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Reveal } from "@/components/Reveal";
+import type { FormEvent } from "react";
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, Check } from "lucide-react";
+import { CheckCircle2, Clock, MapPin, MessageCircle, Send } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { SCHOOL, canonicalUrl, makeWhatsAppUrl } from "@/lib/school";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — AmaVille Escola" },
-      { name: "description", content: "Agende uma visita guiada ou fale com nossa equipe." },
+      { title: "Contato e matrícula 2027 — AmaVille Escola" },
+      {
+        name: "description",
+        content: "Fale com a AmaVille pelo WhatsApp e agende uma visita à escola em São Luís.",
+      },
       { property: "og:title", content: "Fale com a AmaVille" },
-      { property: "og:description", content: "Estamos prontos para conhecer sua família." },
+      {
+        property: "og:description",
+        content: "Agende uma visita e consulte as vagas para 2027.",
+      },
+      { property: "og:url", content: canonicalUrl("/contato") },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/contato") }],
   }),
   component: Contato,
 });
 
 function Contato() {
-  const [sent, setSent] = useState(false);
+  const [preparedUrl, setPreparedUrl] = useState<string | null>(null);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("nome") ?? "").trim();
+    const child = String(data.get("crianca") ?? "").trim();
+    const phone = String(data.get("telefone") ?? "").trim();
+    const stage = String(data.get("turma") ?? "").trim();
+    const message = String(data.get("mensagem") ?? "").trim();
+
+    const text = [
+      "Olá! Gostaria de agendar uma visita à AmaVille.",
+      `Responsável: ${name}`,
+      `Criança: ${child}`,
+      `Telefone para retorno: ${phone}`,
+      `Turma de interesse: ${stage}`,
+      message ? `Mensagem: ${message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    const url = makeWhatsAppUrl(text);
+
+    setPreparedUrl(url);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  const contacts = [
+    {
+      icon: MapPin,
+      title: "Endereço",
+      description: SCHOOL.address,
+      link: SCHOOL.mapUrl,
+      action: "Ver no Google Maps",
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      description: SCHOOL.phoneDisplay,
+      link: makeWhatsAppUrl("Olá! Gostaria de conhecer a AmaVille."),
+      action: "Iniciar conversa",
+    },
+    {
+      icon: Clock,
+      title: "Modalidades",
+      description: "Escolar: 7h30 às 11h30\nIntegral: 7h30 às 18h",
+    },
+  ];
 
   return (
     <>
       <section className="relative pt-36 pb-16 overflow-hidden bg-gradient-hero">
-        <div className="absolute inset-0 opacity-30">
-          <div className="blob" style={{ background: "var(--turquoise)", width: 360, height: 360, top: -80, left: -80 }} />
-          <div className="blob" style={{ background: "var(--orange)", width: 320, height: 320, top: 60, right: -80 }} />
+        <div className="absolute inset-0 opacity-30" aria-hidden="true">
+          <div
+            className="blob"
+            style={{
+              background: "var(--turquoise)",
+              width: 360,
+              height: 360,
+              top: -80,
+              left: -80,
+            }}
+          />
+          <div
+            className="blob"
+            style={{
+              background: "var(--orange)",
+              width: 320,
+              height: 320,
+              top: 60,
+              right: -80,
+            }}
+          />
         </div>
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">Contato</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
+              Contato
+            </div>
             <h1 className="font-display font-extrabold text-4xl lg:text-6xl text-foreground leading-[1.05]">
-              Venha nos conhecer <span className="text-gradient-warm">pessoalmente</span>.
+              Venha conhecer a <span className="text-gradient-warm">AmaVille</span>.
             </h1>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto">
-              Agende uma visita guiada — é a melhor forma de sentir a AmaVille de verdade.
+              Conte um pouco sobre sua família e continue o atendimento pelo WhatsApp oficial da
+              escola.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20" aria-labelledby="agendamento-title">
         <div className="mx-auto max-w-6xl px-6 lg:px-10 grid lg:grid-cols-5 gap-10">
-          <Reveal className="lg:col-span-2 space-y-6">
-            {[
-              {
-                icon: MapPin,
-                t: "Endereço",
-                d: "Av. Litorânea, 07 — Olho D'água\nSão Luís - MA, 65067-490\n(Próximo ao Canto do Coco Mel / Extensão da Rua dos Carcarás)",
-                link: "https://www.google.com/maps/place/AmaVille/@-2.4821576,-44.2406066,17.09z/data=!4m14!1m7!3m6!1s0x7f6927cfda232a7:0x59d7b08c1ae42dfd!2sCanto+do+Coco+Mel!8m2!3d-2.4820801!4d-44.2405845!16s%2Fg%2F11cjk3pgb5!3m5!1s0x7f69327fc386f2d:0x25fe3e9dbb5fe38b!8m2!3d-2.4837716!4d-44.2409785!16s%2Fg%2F11q1d1hrk9?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
-              },
-              { icon: Phone, t: "Telefone", d: "(11) 4002-8922" },
-              { icon: Mail, t: "E-mail", d: "ola@amaville.escola" },
-              { icon: Clock, t: "Horário", d: "Seg a Sex — 7h às 19h" },
-            ].map((c) => (
-              <div key={c.t} className="flex gap-4 p-5 rounded-2xl bg-card border border-border/60 shadow-soft">
+          <Reveal className="lg:col-span-2 space-y-5">
+            {contacts.map((contact) => (
+              <article
+                key={contact.title}
+                className="flex gap-4 p-5 rounded-2xl bg-card border border-border/60 shadow-soft"
+              >
                 <div className="h-12 w-12 rounded-2xl bg-turquoise-soft grid place-items-center flex-shrink-0">
-                  <c.icon className="h-5 w-5" style={{ color: "var(--turquoise)" }} />
+                  <contact.icon className="h-5 w-5 text-primary" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <div className="font-display font-bold text-foreground">{c.t}</div>
-                  {"link" in c && c.link ? (
+                  <h2 className="font-display font-bold text-foreground">{contact.title}</h2>
+                  <p className="text-sm text-muted-foreground whitespace-pre-line mt-1">
+                    {contact.description}
+                  </p>
+                  {contact.link && (
                     <a
-                      href={c.link as string}
+                      href={contact.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link text-sm text-muted-foreground hover:text-primary transition-colors whitespace-pre-line mt-1 block"
+                      className="mt-2 inline-flex rounded text-sm font-bold text-primary underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
-                      {c.d}
-                      <span className="text-xs font-bold text-primary flex items-center gap-1 mt-2.5 group-hover/link:underline">
-                        Ver no Google Maps →
-                      </span>
+                      {contact.action}
                     </a>
-                  ) : (
-                    <div className="text-sm text-muted-foreground whitespace-pre-line mt-1">{c.d}</div>
                   )}
                 </div>
-              </div>
+              </article>
             ))}
           </Reveal>
 
-          <Reveal delay={0.15} className="lg:col-span-3">
+          <Reveal delay={0.1} className="lg:col-span-3">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+              onSubmit={handleSubmit}
               className="rounded-3xl bg-card border border-border/60 p-8 lg:p-10 shadow-card space-y-5"
             >
-              <h2 className="font-display font-extrabold text-2xl text-foreground">Agende sua visita</h2>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Field label="Seu nome" name="nome" />
-                <Field label="Nome da criança" name="crianca" />
-                <Field label="E-mail" type="email" name="email" />
-                <Field label="Telefone" name="telefone" />
-              </div>
-              <Field label="Idade da criança" name="idade" />
               <div>
-                <label className="text-sm font-medium text-foreground/80">Mensagem</label>
+                <h2
+                  id="agendamento-title"
+                  className="font-display font-extrabold text-2xl text-foreground"
+                >
+                  Prepare sua mensagem de visita
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Os campos marcados com * são obrigatórios.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Field label="Nome do responsável *" name="nome" autoComplete="name" required />
+                <Field label="Nome da criança *" name="crianca" required />
+                <Field
+                  label="Telefone para retorno *"
+                  name="telefone"
+                  type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  minLength={10}
+                  required
+                />
+                <div>
+                  <label className="text-sm font-medium text-foreground/80" htmlFor="turma">
+                    Turma de interesse *
+                  </label>
+                  <select
+                    id="turma"
+                    name="turma"
+                    required
+                    defaultValue=""
+                    className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <option value="" disabled>
+                      Selecione uma turma
+                    </option>
+                    <option>Infantil I — 1 ano</option>
+                    <option>Infantil II — 2 anos</option>
+                    <option>Infantil III — 3 anos</option>
+                    <option>Infantil IV — 4 anos</option>
+                    <option>Infantil V — 5 anos</option>
+                    <option>1º ano — 6 anos</option>
+                    <option>2º ano — 7 anos</option>
+                    <option>3º ano — 8 anos</option>
+                    <option>4º ano — 9 anos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-foreground/80" htmlFor="mensagem">
+                  Mensagem
+                </label>
                 <textarea
+                  id="mensagem"
+                  name="mensagem"
                   rows={4}
-                  className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                  placeholder="Conte um pouco sobre sua família..."
+                  maxLength={600}
+                  className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  placeholder="Conte qual modalidade procura ou deixe sua dúvida."
                 />
               </div>
+
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                Ao continuar, as informações preenchidas serão incluídas em uma mensagem no
+                WhatsApp. O envio só acontece depois que você revisar e confirmar a mensagem no
+                aplicativo.
+              </p>
+
               <button
                 type="submit"
-                disabled={sent}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand text-primary-foreground px-7 py-3.5 font-semibold shadow-warm hover:scale-[1.02] transition-transform disabled:opacity-80"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand text-primary-foreground px-7 py-3.5 font-semibold shadow-warm hover:scale-[1.02] transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                {sent ? (<><Check className="h-4 w-4" /> Recebido! Entraremos em contato.</>) : (<><Send className="h-4 w-4" /> Enviar pedido</>)}
+                <Send className="h-4 w-4" aria-hidden="true" />
+                Continuar no WhatsApp
               </button>
+
+              {preparedUrl && (
+                <div
+                  role="status"
+                  className="flex items-start gap-3 rounded-2xl bg-turquoise-soft p-4 text-sm text-foreground"
+                >
+                  <CheckCircle2
+                    className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  <p>
+                    A conversa foi preparada. Se o WhatsApp não abriu, use este{" "}
+                    <a
+                      href={preparedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-primary underline underline-offset-4"
+                    >
+                      link direto
+                    </a>
+                    .
+                  </p>
+                </div>
+              )}
             </form>
           </Reveal>
         </div>
@@ -117,15 +263,39 @@ function Contato() {
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+type FieldProps = {
+  label: string;
+  name: string;
+  type?: string;
+  autoComplete?: string;
+  inputMode?: "tel";
+  minLength?: number;
+  required?: boolean;
+};
+
+function Field({
+  label,
+  name,
+  type = "text",
+  autoComplete,
+  inputMode,
+  minLength,
+  required,
+}: FieldProps) {
   return (
     <div>
-      <label className="text-sm font-medium text-foreground/80" htmlFor={name}>{label}</label>
+      <label className="text-sm font-medium text-foreground/80" htmlFor={name}>
+        {label}
+      </label>
       <input
         id={name}
         name={name}
         type={type}
-        className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        minLength={minLength}
+        required={required}
+        className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       />
     </div>
   );
