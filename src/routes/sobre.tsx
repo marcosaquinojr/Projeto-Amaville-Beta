@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { CTA } from "@/components/sections/CTA";
 import { Values } from "@/components/sections/Values";
-import { canonicalUrl, INSTAGRAM_MEDIA } from "@/lib/school";
+import { canonicalUrl } from "@/lib/school";
+import { INSTAGRAM_MEDIA } from "@/lib/instagram";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -61,7 +62,6 @@ function Sobre() {
                 width={1080}
                 height={1440}
                 loading="eager"
-                referrerPolicy="no-referrer"
               />
             </div>
           </Reveal>

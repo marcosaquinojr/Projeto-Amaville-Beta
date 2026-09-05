@@ -1,7 +1,8 @@
 import { Reveal } from "@/components/Reveal";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { INSTAGRAM_MEDIA, SCHOOL } from "@/lib/school";
+import { SCHOOL } from "@/lib/school";
+import { INSTAGRAM_MEDIA } from "@/lib/instagram";
 
 const items = [
   {
@@ -57,7 +58,6 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
                 alt={it.alt}
                 loading="lazy"
                 decoding="async"
-                referrerPolicy="no-referrer"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-purple/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />

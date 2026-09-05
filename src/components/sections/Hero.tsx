@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookHeart, Languages, Sparkles } from "lucide-react";
-import { INSTAGRAM_MEDIA, SCHOOL } from "@/lib/school";
+import { SCHOOL } from "@/lib/school";
+import { INSTAGRAM_MEDIA } from "@/lib/instagram";
 
 export function Hero() {
   return (
@@ -86,7 +87,6 @@ export function Hero() {
               width={1080}
               height={1440}
               fetchPriority="high"
-              referrerPolicy="no-referrer"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-purple/30 via-transparent to-transparent" />

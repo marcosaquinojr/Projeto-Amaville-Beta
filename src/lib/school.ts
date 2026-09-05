@@ -10,23 +10,6 @@ export const SCHOOL = {
   schoolYear: "2027",
 } as const;
 
-/**
- * Fotos oficiais selecionadas do perfil da AmaVille.
- * O endpoint /media/?size=l é estável e o Instagram renova o CDN automaticamente.
- */
-export const INSTAGRAM_MEDIA = {
-  hero: "https://www.instagram.com/p/DP6fFA9EVS8/media/?size=l",
-  about: "https://www.instagram.com/p/Dap_PmqFtWs/media/?size=l",
-  gallery: [
-    "https://www.instagram.com/p/DQaITVfAcNa/media/?size=l",
-    "https://www.instagram.com/p/DP6fFA9EVS8/media/?size=l",
-    "https://www.instagram.com/p/Dap_PmqFtWs/media/?size=l",
-    "https://www.instagram.com/p/DbJi1OuBbFU/media/?size=l",
-    "https://www.instagram.com/p/DbWb_sAh2QU/media/?size=l",
-    "https://www.instagram.com/p/DZ-bL8XlOt-/media/?size=l",
-  ],
-} as const;
-
 export function makeWhatsAppUrl(message: string) {
   return `https://wa.me/${SCHOOL.phoneE164}?text=${encodeURIComponent(message)}`;
 }
