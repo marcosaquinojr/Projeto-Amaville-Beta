@@ -54,13 +54,13 @@ function Sobre() {
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-card">
+            <div className="overflow-hidden rounded-[2.5rem] bg-card shadow-card">
               <img
                 src={INSTAGRAM_MEDIA.about}
                 alt="Turma da AmaVille reunida em um momento de devocional"
-                className="h-full w-full object-cover"
-                width={1080}
-                height={1440}
+                className="block h-auto w-full"
+                width={480}
+                height={640}
                 loading="eager"
               />
             </div>

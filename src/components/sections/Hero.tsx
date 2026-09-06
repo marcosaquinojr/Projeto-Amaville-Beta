@@ -80,14 +80,14 @@ export function Hero() {
         </div>
 
         <div className="lg:col-span-6 relative">
-          <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-card">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-card shadow-card">
             <img
               src={INSTAGRAM_MEDIA.hero}
               alt="Crianças da AmaVille participando de uma atividade ao ar livre"
-              width={1080}
-              height={1440}
+              width={513}
+              height={640}
               fetchPriority="high"
-              className="h-full w-full object-cover"
+              className="block h-auto w-full"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-purple/30 via-transparent to-transparent" />
           </div>

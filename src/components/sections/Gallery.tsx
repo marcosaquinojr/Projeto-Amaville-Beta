@@ -8,15 +8,10 @@ const items = [
   {
     src: INSTAGRAM_MEDIA.gallery[1],
     alt: "Crianças da AmaVille brincando ao ar livre",
-    className: "row-span-2",
   },
   { src: INSTAGRAM_MEDIA.gallery[0], alt: "Criança da AmaVille em atividade de aprendizagem" },
   { src: INSTAGRAM_MEDIA.gallery[2], alt: "Momento de devocional com a turma da AmaVille" },
-  {
-    src: INSTAGRAM_MEDIA.gallery[3],
-    alt: "Piquenique da turma da AmaVille",
-    className: "col-span-2",
-  },
+  { src: INSTAGRAM_MEDIA.gallery[3], alt: "Piquenique da turma da AmaVille" },
   { src: INSTAGRAM_MEDIA.gallery[4], alt: "Registro de uma vivência escolar da AmaVille" },
   { src: INSTAGRAM_MEDIA.gallery[5], alt: "Projeto pedagógico da AmaVille" },
 ];
@@ -46,19 +41,19 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
           )}
         </Reveal>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 auto-rows-[200px] lg:auto-rows-[240px] gap-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
           {list.map((it, i) => (
             <Reveal
               key={it.alt}
               delay={i * 0.05}
-              className={`group relative overflow-hidden rounded-3xl shadow-soft ${it.className ?? ""}`}
+              className="group relative mb-4 break-inside-avoid overflow-hidden rounded-3xl bg-card shadow-soft"
             >
               <img
                 src={it.src}
                 alt={it.alt}
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-purple/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
             </Reveal>
