@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amaviile.marcosaquinojunior.workers.dev/sitemap.xml
+Sitemap: https://escolaamaville.com.br/sitemap.xml
